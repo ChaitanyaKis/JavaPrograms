@@ -1,0 +1,67 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class QueueDemo {
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n=== Queue Operations ===");
+            System.out.println("1. Enqueue");
+            System.out.println("2. Dequeue");
+            System.out.println("3. Peek");
+            System.out.println("4. Check if Empty");
+            System.out.println("5. Display Queue");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+            
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter number to enqueue: ");
+                    int num = scanner.nextInt();
+                    queue.add(num);
+                    System.out.println(num + " added to the queue.");
+                    break;
+
+                case 2:
+                    if (!queue.isEmpty()) {
+                        int removed = queue.poll();
+                        System.out.println("Dequeued: " + removed);
+                    } else {
+                        System.out.println("Queue is empty!");
+                    }
+                    break;
+
+                case 3:
+                    if (!queue.isEmpty()) {
+                        System.out.println("Front element: " + queue.peek());
+                    } else {
+                        System.out.println("Queue is empty!");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println(queue.isEmpty() ? "Queue is empty!" : "Queue is not empty.");
+                    break;
+
+                case 5:
+                    System.out.println("Queue elements: " + queue);
+                    break;
+
+                case 0:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        } while (choice != 0);
+
+        scanner.close();
+    }
+}
